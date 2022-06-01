@@ -26,7 +26,10 @@ export default (ReadwisePluginElement) => ({
   name: 'reader-translation-plugin',
   Element: class Translator extends ReadwisePluginElement {
     connectedCallback() {
+      const li = document.createElement('li');
+      li.classList.add("subPopoverListItem")
       const button = document.createElement('button');
+      button.classList.add("subPopoverButton")
       button.innerText = 'Translate';
       button.addEventListener('click', async () => {
         const textToTranslate = this.data.highlight?.content;
@@ -37,8 +40,10 @@ export default (ReadwisePluginElement) => ({
         const trans = await getTranslation(textToTranslate);
         const value = trans[0].translations[0].text;
         await this.actions.editNote(`.qa ${textToTranslate} ? ${value}`); // For Tadek: put translated text here
+        await this.actions.openNoteField()
       });
-      this.appendChild(button);
+      li.appendChild(button)
+      this.appendChild(li);
     }
   }
 })
