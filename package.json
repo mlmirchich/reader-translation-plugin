@@ -1,6 +1,6 @@
 {
   "name": "reader-translation-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This plugin enables you to quickly create flashcards with the words you want to learn.",
   "main": "index.js",
   "scripts": {
